@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+</head>
+<body style="background-color: #8d83b6;">
+
+<div class="container" style="background-color: #2a1f5a; margin-top: 10%;">
+    <br>
+    <center><h1 style="color: white; font-family: cursive;">Food Galore</h1></center>
+    <br>
+    <div class="row">
+        {% if request.session.customer %}
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <!--center><h5 style="color: white">Welcome {{ request.session.tableName }}</h5></center-->
+            <br>
+            <center><h5 style="color: white">Welcome {{ request.session.customerName }}</h5></center>
+            <br>
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <center>
+                        <div class="row">
+                         <a href="/cart"><h6 style="color: white; margin-left:20px; margin-right:10px">Cart</h6></a>
+                            <span class="badge bg-outline-primary" style="color:white">{{ request.session.cart.keys|length }}</span>
+                        </div>
+                    </center>
+                </div>
+                <div class="col-sm-4">
+                    <center>
+                        <a href="/orders"><h6 style="color: white; margin-left:20px; margin-right:10px">Orders</h6></a>
+                    </center>
+                </div>
+                <div class="col-sm-4">
+                    <center>
+                        <a href="/logout"><h6 style="color: white; margin-left:20px; margin-right:10px">Logout</h6></a>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+        {% endif %}
+    </div>
+    <br>
+    <div style="border-bottom: solid 2px white;"></div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <center>
+                <p style="color: white;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </center>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+    <br>
+    <center>
+
+        <div class="row ">
+            <div class="col-sm-12">
+
+                <a href="/" style="color: white; margin-left:20px; margin-right:10px">All Items</a>
+                {% for catgry in category %}
+                <a href="/?category={{catgry.id}}" style="color: white; margin-left:20px; margin-right:10px">{{catgry.name}}</a>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </center>
+
+
+    {% block content %} {% endblock %}
+
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
